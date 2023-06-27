@@ -26,7 +26,7 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 2. Navigate to the project directory:
 
     ```bash
-    cd awesome-project
+    cd sensors
 
 3. Install the dependencies:
 
