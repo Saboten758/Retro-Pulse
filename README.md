@@ -37,4 +37,4 @@ This will start the Metro bundler and launch the project on an emulator or conne
 3. Explore the real-time sensor data displayed on the screen.
 
 ## Contributing
-This is just a basic project,contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+This is just a basic project,contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Peace!1!
