@@ -1,4 +1,4 @@
-# sensors
+# Sensors
 
 Well, I was trying out react-native-sensors for getting the sensor data from my phone. This repository contains an app built with React Native.
 
@@ -15,7 +15,7 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 - Utilizes accelerometer, magnetometer, and gyroscope sensors.
 - Displays real-time sensor data.
 - Interactive button to start/stop sensor updates.
-- Stylish and user-friendly UI.
+- Very Simple UI
 
 ## Installation
 
@@ -23,3 +23,17 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 
    ```bash
    git clone https://github.com/your-username/awesome-project.git
+2. Navigate to the project directory:
+
+    ```bash
+    cd awesome-project
+
+3. Install the dependencies:
+
+    ```bash
+    npm install
+4. Run the project:
+    ```bash
+    yarn start
+
+This will start the Metro bundler and launch the project on an emulator or connected device.
