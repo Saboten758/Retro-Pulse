@@ -20,7 +20,7 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/awesome-project.git
+   git clone https://github.com/Saboten758/sensors.git
 2. Navigate to the project directory:
     ```bash
     cd sensors
