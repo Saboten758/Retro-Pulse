@@ -13,7 +13,6 @@ const main=()=>{
   const [accel, setAccel] = useState({ x: 0, y: 0, z: 0, timestamp: 0 });
   const [magno,setmagno]=useState({x:0,y:0,z:0,timestamp:0})
   const [gyro,setgyro]=useState({x:0,y:0,z:0,timestamp:0})
-  const [isTorchOn, setIsTorchOn] = useState(false);
   
   useEffect(() => {
     const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) => {
