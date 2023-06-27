@@ -8,7 +8,6 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -20,20 +19,22 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 ## Installation
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/your-username/awesome-project.git
 2. Navigate to the project directory:
-
     ```bash
     cd sensors
-
 3. Install the dependencies:
-
     ```bash
     yarn add
 4. Run the project:
     ```bash
     yarn start
-
 This will start the Metro bundler and launch the project on an emulator or connected device.
+## Usage
+1. Open the app on your device or emulator.
+2. Press the "Press me!" button to start/stop sensor updates.
+3. Explore the real-time sensor data displayed on the screen.
+
+## Contributing
+This is just a basic project,contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
