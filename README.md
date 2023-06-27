@@ -31,7 +31,7 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
 3. Install the dependencies:
 
     ```bash
-    npm install
+    yarn add
 4. Run the project:
     ```bash
     yarn start
