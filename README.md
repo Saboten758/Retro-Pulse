@@ -26,7 +26,7 @@ Well, I was trying out react-native-sensors for getting the sensor data from my 
     cd sensors
 3. Install the dependencies:
     ```bash
-    yarn add
+    npm install
 4. Run the project:
     ```bash
     yarn start
