@@ -1,17 +1,17 @@
 import React,{useState,useEffect} from 'react'
-import {Text,Image,View,StyleSheet,Alert, TouchableOpacity} from 'react-native'
+import {Text,Image,View,StyleSheet,Alert, TouchableOpacity,DeviceEventEmitter} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator,NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/core'
 import Torch from 'react-native-torch';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { accelerometer,SensorTypes, setUpdateIntervalForType,magnetometer,gyroscope } from 'react-native-sensors';
-
+import { hasLightSensor, startLightSensor, stopLightSensor } from 'react-native-ambient-light-sensor';
 
 setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 setUpdateIntervalForType(SensorTypes.magnetometer, 400);
 setUpdateIntervalForType(SensorTypes.gyroscope, 400);
-
+var toggle=false
 const Stack = createNativeStackNavigator();
 
 const app=()=>{
@@ -44,11 +44,45 @@ const Home=()=>{
 }
 
 const Main=()=>{
+  const[torchin,settorchin]=useState(false)
   const [but,setbut]=useState(true);
   const [accel, setAccel] = useState({ x: 0, y: 0, z: 0, timestamp: 0 });
   const [magno,setmagno]=useState({x:0,y:0,z:0,timestamp:0})
   const [gyro,setgyro]=useState({x:0,y:0,z:0,timestamp:0})
-  
+  const [result, setResult] = React.useState<number | undefined>();
+  const [hasSensor, setHasSensor] = React.useState<boolean>();
+
+  useEffect(() => {
+      hasLightSensor().then(setHasSensor);
+      startLightSensor();
+      
+      const subscription = DeviceEventEmitter.addListener(
+        'LightSensor',
+        (data: { lightValue: number }) => {
+            setResult(data.lightValue);
+            if(toggle==true && data.lightValue<9){
+              Torch.switchState(true);
+              settorchin(true)
+            }
+            if(toggle==true &&data.lightValue>=9){
+              Torch.switchState(false);
+              settorchin(false)
+            }
+            if(toggle==false){
+              if(torchin==true){
+                settorchin(false)
+                Torch.switchState(false)
+              }
+            }
+        },
+    );
+
+    return () => {
+        stopLightSensor();
+        subscription?.remove();
+    };
+  }, []);
+
   useEffect(() => {
     const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) => {
       if(!but){
@@ -84,7 +118,6 @@ const Main=()=>{
       sub.unsubscribe();
     }
   },[but]);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>SENSORS!</Text>
@@ -115,6 +148,9 @@ const Main=()=>{
         </View>
          
       </View>
+      <Text style={styles.text2}>Device has sensor: {hasSensor ? 'YEP' : 'NOPE :<'}</Text>
+      <Text>{hasSensor?"Light Result Value:"+result:""}</Text>
+      <TouchableOpacity onPress={()=>{toggle=!toggle}} style={{ backgroundColor: toggle ? "green" : "red", padding: 10, borderRadius: 5 ,marginTop:10}}><Text style={styles.buttonText}>{hasSensor?!toggle?"Automatically turn on Flashlight?":"Flashlight will turn on automatically in Dark!":""}</Text></TouchableOpacity>
     </View>
 
   );
