@@ -30,7 +30,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
     npm install
 4. Run the project:
     ```bash
-    yarn start
+    npm start
 This will start the Metro bundler and launch the project on an emulator or connected device.
 ## Usage
 1. Open the app on your device or emulator.
