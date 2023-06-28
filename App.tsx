@@ -3,7 +3,8 @@ import {Text,Image,View,StyleSheet,Alert, TouchableOpacity} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator,NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/core'
-
+import Torch from 'react-native-torch';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { accelerometer,SensorTypes, setUpdateIntervalForType,magnetometer,gyroscope } from 'react-native-sensors';
 
 
@@ -26,12 +27,17 @@ const app=()=>{
 }
 
 const Home=()=>{
+  const [torching,setTorching]=useState(true)
   const navigation=useNavigation();
   return(
     <View style={styles.container}>
       <Text style={styles.text3}>WELCOME</Text>
       <Image source={require('./cassette.gif')} style={styles.giif}/>
-      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Work')}><Text style={styles.buttonText}>Sensors</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Work')}><Icon style={styles.icon} name="microchip" size={20} color="black" /><Text style={styles.buttonText}>Sensors</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.torch_button} onPress={()=>{setTorching(!torching);if (torching==true)Torch.switchState(true);else Torch.switchState(false); }}>
+      <Icon style={styles.icon} name="sun-o" size={20} color="black"/>
+      <Text style={styles.buttonText}>FLASH</Text>
+      </TouchableOpacity>
     </View>
 
   );
@@ -84,6 +90,7 @@ const Main=()=>{
       <Text style={styles.text}>SENSORS!</Text>
       <TouchableOpacity onPress={()=>{Alert.alert("Woahh!");setbut(!but);}} style={styles.button}>
         <Text style={styles.buttonText}>{but?"Press me!":"woaah!"}</Text>
+        <Icon style={styles.icon} name="hand-o-up" size={20} color="black"/>
       </TouchableOpacity>
       <View style={styles.sensor_data_cont}>
         <View style={styles.sensor_cont}>
@@ -163,5 +170,17 @@ const styles=StyleSheet.create({
     marginBottom:10,
     marginTop:10,
     borderRadius:3,
+  },
+  torch_button:{
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginTop:10,
+    backgroundColor: '#BBA9C3',
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  icon:{
+    alignSelf:'center'
   }
 });
