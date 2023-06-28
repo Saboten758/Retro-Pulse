@@ -31,7 +31,7 @@ const Home=()=>{
   const navigation=useNavigation();
   return(
     <View style={styles.container}>
-      <Text style={styles.text3}>WELCOME</Text>
+      <Text style={styles.text3}>Starting...</Text>
       <Image source={require('./cassette.gif')} style={styles.giif}/>
       <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Work')}><Icon style={styles.icon} name="microchip" size={20} color="black" /><Text style={styles.buttonText}>Sensors</Text></TouchableOpacity>
       <TouchableOpacity style={styles.torch_button} onPress={()=>{setTorching(!torching);if (torching==true)Torch.switchState(true);else Torch.switchState(false); }}>
