@@ -11,7 +11,6 @@ import { hasLightSensor, startLightSensor, stopLightSensor } from 'react-native-
 setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 setUpdateIntervalForType(SensorTypes.magnetometer, 400);
 setUpdateIntervalForType(SensorTypes.gyroscope, 400);
-var toggle=false
 const Stack = createNativeStackNavigator();
 
 const app=()=>{
@@ -44,6 +43,7 @@ const Home=()=>{
 }
 
 const Main=()=>{
+  const[toggle,settoggle]=useState(false)
   const[torchin,settorchin]=useState(false)
   const [but,setbut]=useState(true);
   const [accel, setAccel] = useState({ x: 0, y: 0, z: 0, timestamp: 0 });
@@ -60,11 +60,11 @@ const Main=()=>{
         'LightSensor',
         (data: { lightValue: number }) => {
             setResult(data.lightValue);
-            if(toggle==true && data.lightValue<9){
+            if(toggle==true && data.lightValue<5){
               Torch.switchState(true);
               settorchin(true)
             }
-            if(toggle==true &&data.lightValue>=9){
+            if(toggle==true &&data.lightValue>=5){
               Torch.switchState(false);
               settorchin(false)
             }
@@ -81,7 +81,7 @@ const Main=()=>{
         stopLightSensor();
         subscription?.remove();
     };
-  }, []);
+  }, [torchin,toggle]);
 
   useEffect(() => {
     const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) => {
@@ -148,9 +148,9 @@ const Main=()=>{
         </View>
          
       </View>
-      <Text style={styles.text2}>Device has sensor: {hasSensor ? 'YEP' : 'NOPE :<'}</Text>
+      <Text style={styles.text2}>Device has light sensor: {hasSensor ? 'YEP' : 'NOPE :<'}</Text>
       <Text>{hasSensor?"Light Result Value:"+result:""}</Text>
-      <TouchableOpacity onPress={()=>{toggle=!toggle}} style={{ backgroundColor: toggle ? "green" : "red", padding: 10, borderRadius: 5 ,marginTop:10}}><Text style={styles.buttonText}>{hasSensor?!toggle?"Automatically turn on Flashlight?":"Flashlight will turn on automatically in Dark!":""}</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>{settoggle(!toggle)}} style={{ backgroundColor: hasSensor?toggle ? "#39FF14" : "#FF3366":"", padding:hasSensor? 10:0, borderRadius:hasSensor? 5:0 ,marginTop:hasSensor?10:0}}><Text style={styles.buttonText}>{hasSensor?!toggle?"Automatically turn on Flashlight?":"Flashlight will turn on automatically in Dark!":""}</Text></TouchableOpacity>
     </View>
 
   );
