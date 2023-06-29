@@ -15,6 +15,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Displays real-time sensor data.
 - Interactive button to start/stop sensor updates.
 - Very Simple UI
+- Additional Device Info
 - Automatic flashlight in the dark (Only on devices with a light sensor)
 
 ## Installation
@@ -38,6 +39,9 @@ This will start the Metro bundler and launch the project on an emulator or conne
 3. Press the "Press me!" button to start/stop sensor updates.
 4. Explore the real-time sensor data displayed on the screen.
 5. If your device houses a light sensor, you can also use the light sensor to turn on or off flashlight automatically!!
+6. Use the "Flash" button from the main screen for using flashlight.
+7. Tap the "i" from the main screen button for getting more info about the device.
+
 
 ## Contributing
 This is just a basic project,contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Peace!!
