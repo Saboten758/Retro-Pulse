@@ -14,7 +14,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Utilizes accelerometer, magnetometer, gyroscope and light sensors.
 - Displays real-time sensor data.
 - Interactive button to start/stop sensor updates.
-- Very simple UI.
+- Simple UI.
 - Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
 
