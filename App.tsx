@@ -7,6 +7,7 @@ import Torch from 'react-native-torch';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { accelerometer,SensorTypes, setUpdateIntervalForType,magnetometer,gyroscope } from 'react-native-sensors';
 import { hasLightSensor, startLightSensor, stopLightSensor } from 'react-native-ambient-light-sensor';
+import DeviceInfo from 'react-native-device-info';
 
 setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 setUpdateIntervalForType(SensorTypes.magnetometer, 400);
@@ -18,7 +19,8 @@ const app=()=>{
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen component={Home} name="Welcome"/>
-        <Stack.Screen component={Main} name="Work"/>
+        <Stack.Screen component={Main} name="Sensors"/>
+        <Stack.Screen component={Info} name="Device Info"/>
       </Stack.Navigator>
     </NavigationContainer>
 
@@ -32,7 +34,10 @@ const Home=()=>{
     <View style={styles.container}>
       <Text style={styles.text3}>Starting...</Text>
       <Image source={require('./cassette.gif')} style={styles.giif}/>
-      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Work')}><Icon style={styles.icon} name="microchip" size={20} color="black" /><Text style={styles.buttonText}>Sensors</Text></TouchableOpacity>
+      <View style={styles.sensor_data_cont}>
+        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Sensors')}><Icon style={styles.icon} name="microchip" size={20} color="black" /><Text style={styles.buttonText}>Sensors</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('Device Info')} style={styles.info}><Icon style={styles.icon} name="info" color="black" size={20}/></TouchableOpacity>
+      </View>
       <TouchableOpacity style={styles.torch_button} onPress={()=>{setTorching(!torching);if (torching==true)Torch.switchState(true);else Torch.switchState(false); }}>
       <Icon style={styles.icon} name="sun-o" size={20} color="black"/>
       <Text style={styles.buttonText}>FLASH</Text>
@@ -40,6 +45,80 @@ const Home=()=>{
     </View>
 
   );
+}
+
+const Info=()=>{
+  const [an,setan]=useState(0)
+  const [name,setname]=useState("")
+  const [bname,setbname]=useState("")
+  const [disc,setdisc]=useState(0)
+  const [carrier,setcarrier]=useState("")
+  const [code,setcode]=useState("")
+  const [dname,setdname]=useState("")
+  const [hard,sethard]=useState("")
+  const [ip,setip]=useState("")
+  const [pannel,setpannel]=useState("")
+  const [model,setmodel]=useState("")
+  const [result, setResult] = React.useState<number | undefined>();
+  const [hasSensor, setHasSensor] = React.useState<boolean>();
+  const [nmodel,setnmodel]=useState("")
+  const [wmodel,setwmodel]=useState("")
+  const [hmodel,sethmodel]=useState("")
+  const [moa,setmoa]=useState(0)
+
+  useEffect(() => {
+    hasLightSensor().then(setHasSensor);
+    startLightSensor();
+    
+    const subscription = DeviceEventEmitter.addListener(
+      'LightSensor',
+      (data: { lightValue: number }) => {
+          setResult(data.lightValue);
+      },
+  );
+
+  return () => {
+      stopLightSensor();
+      subscription?.remove();
+  };
+}, []);
+
+  const getDeviceInfo=async()=>{
+    setan(await DeviceInfo.getApiLevel())
+    setname(await DeviceInfo.getSystemName())
+    setbname(await DeviceInfo.getBrand())
+    setdisc(await DeviceInfo.getTotalDiskCapacity())
+    setcarrier(await DeviceInfo.getCarrier())
+    setcode(await DeviceInfo.getCodename())
+    setdname(await DeviceInfo.getDeviceNameSync())
+    sethard(await DeviceInfo.getHardware())
+    setip(await DeviceInfo.getIpAddress())
+    setpannel(await DeviceInfo.getDisplay())
+    setmodel(await DeviceInfo.getModel())
+    setnmodel(await DeviceInfo.getBootloader())
+    setwmodel(await DeviceInfo.getDeviceType())
+    sethmodel(await DeviceInfo.getHost())
+    setmoa((await DeviceInfo.getSystemAvailableFeatures()).length)
+  }
+  getDeviceInfo()
+  return(
+    <View style={styles.container}>
+      <Text style={styles.txt}>Device Name: {dname} ({model})</Text>
+      <Text style={styles.txt}>Device Type: {wmodel}  Host: {hmodel}</Text>
+      <Text style={styles.txt}>OS: {name}  API-Level: {an} </Text>
+      <Text style={styles.txt}>Manufactured By: {bname}</Text>
+      <Text style={styles.txt}>Free Space: {(disc/8e+6).toFixed(2)}MB ({(disc/8e+9).toFixed(2)}GB)</Text>
+      <Text style={styles.txt}>Carrier: {carrier}  Available Features: {moa}</Text>
+      <Text style={styles.txt}>Code Name: {code}  Hardware: {hard} </Text>
+      <Text style={styles.txt}>Display Pannel: {pannel}</Text>
+      <Text style={styles.txt}>IP Address: {ip}</Text>
+      <Text style={styles.txt}>Light Sensor: {hasSensor ? 'YES' : 'NO'}  Light Sensor Data: {result}</Text>
+      <Text style={styles.txt}>Bootloader: {nmodel}</Text>
+      </View>
+    
+
+  );
+
 }
 
 const Main=()=>{
@@ -149,7 +228,7 @@ const Main=()=>{
          
       </View>
       <Text style={styles.text2}>Device has light sensor: {hasSensor ? 'YEP' : 'NOPE :<'}</Text>
-      <Text>{hasSensor?"Light Result Value:"+result:""}</Text>
+      <Text>{hasSensor?"Light Sensor Data:"+result:""}</Text>
       <TouchableOpacity onPress={()=>{settoggle(!toggle)}} style={{ backgroundColor: hasSensor?toggle ? "#39FF14" : "#FF3366":"", padding:hasSensor? 10:0, borderRadius:hasSensor? 5:0 ,marginTop:hasSensor?10:0}}><Text style={styles.buttonText}>{hasSensor?!toggle?"Automatically turn on Flashlight?":"Flashlight will turn on automatically in Dark!":""}</Text></TouchableOpacity>
     </View>
 
@@ -164,6 +243,12 @@ export default app;
 const styles=StyleSheet.create({
   container:{
     padding:10,alignItems:'center',justifyContent:'center',flex:1,backgroundColor:"#6B7A8F"
+  },
+  txt:{
+    fontSize: 17,
+    color: '#E6E6FA', 
+    fontWeight: 'bold', 
+    lineHeight: 24,
   },
   text:{
     padding:10,fontSize:43,color:'red',
@@ -201,7 +286,7 @@ const styles=StyleSheet.create({
   },
   giif:{
     padding:10,
-    height:450,
+    height:380,
     width:450,
     marginBottom:10,
     marginTop:10,
@@ -218,5 +303,14 @@ const styles=StyleSheet.create({
   },
   icon:{
     alignSelf:'center'
+  },
+  info:{
+    marginLeft:10,
+    borderRadius:30,
+    alignItems:'center',
+    justifyContent:'center',
+    width:40,
+    height:40,
+    backgroundColor:"#BBA9C3"
   }
 });
