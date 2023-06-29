@@ -14,8 +14,8 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Utilizes accelerometer, magnetometer, gyroscope and light sensors.
 - Displays real-time sensor data.
 - Interactive button to start/stop sensor updates.
-- Very Simple UI.
-- Additional Device Info.
+- Very simple UI.
+- Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
 
 ## Installation
@@ -35,12 +35,12 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 This will start the Metro bundler and launch the project on an emulator or connected device.
 ## Usage
 1. Open the app on your device or emulator.
-2. Navigate to the 'Sensors' button
+2. Navigate to the "Sensors" button
 3. Press the "Press me!" button to start/stop sensor updates.
 4. Explore the real-time sensor data displayed on the screen.
 5. If your device houses a light sensor, you can also use the light sensor to turn on or off flashlight automatically!!
 6. Use the "Flash" button from the main screen for using flashlight.
-7. Tap the "i" from the main screen button for getting more info about the device.
+7. Tap the "i" from the main screen button for getting more info about the device. In the menu, tap on "All Features" to list all the available android features.
 
 
 ## Contributing

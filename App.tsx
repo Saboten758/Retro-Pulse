@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Text,Image,View,StyleSheet,Alert, TouchableOpacity,DeviceEventEmitter} from 'react-native'
+import {Text,Image,View,StyleSheet,Alert, TouchableOpacity,DeviceEventEmitter, FlatList} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator,NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/core'
@@ -21,6 +21,7 @@ const app=()=>{
         <Stack.Screen component={Home} name="Welcome"/>
         <Stack.Screen component={Main} name="Sensors"/>
         <Stack.Screen component={Info} name="Device Info"/>
+        <Stack.Screen component={More} name="Features"/>
       </Stack.Navigator>
     </NavigationContainer>
 
@@ -48,6 +49,7 @@ const Home=()=>{
 }
 
 const Info=()=>{
+  const navigation=useNavigation();
   const [an,setan]=useState(0)
   const [name,setname]=useState("")
   const [bname,setbname]=useState("")
@@ -114,11 +116,28 @@ const Info=()=>{
       <Text style={styles.txt}>IP Address: {ip}</Text>
       <Text style={styles.txt}>Light Sensor: {hasSensor ? 'YES' : 'NO'}  Light Sensor Data: {result}</Text>
       <Text style={styles.txt}>Bootloader: {nmodel}</Text>
+      <TouchableOpacity style={styles.button2} onPress={()=>navigation.navigate('Features')}><Icon name="database" style={styles.icon} color="black" size={13}/><Text style={styles.buttonText}>All Features</Text></TouchableOpacity>
       </View>
     
 
   );
 
+}
+
+const More=()=>{
+  const [an,setan]=useState([''])
+  const getDeviceInfo=async()=>{
+    setan(await DeviceInfo.getSystemAvailableFeatures())
+  }
+  getDeviceInfo()
+  return(
+    <View style={styles.container}>
+      <FlatList data={an} renderItem={({item})=>
+      <View style={styles.itemContainer}>
+        <Text style={styles.itemText}>{item}</Text>
+      </View>}/>
+    </View>
+  )
 }
 
 const Main=()=>{
@@ -276,6 +295,15 @@ const styles=StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button2: {
+    marginTop:10,
+    backgroundColor: '#BBA9C3',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   buttonText: {
     color: 'black',
     fontSize: 16,
@@ -312,5 +340,16 @@ const styles=StyleSheet.create({
     width:40,
     height:40,
     backgroundColor:"#BBA9C3"
-  }
+  },
+  itemContainer: {
+    backgroundColor: '#8CA5AD',
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 8,
+    elevation: 2,
+  },
+  itemText: {
+    fontSize: 15,
+    color: '#333333',
+  },
 });
