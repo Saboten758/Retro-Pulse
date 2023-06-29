@@ -14,9 +14,9 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Utilizes accelerometer, magnetometer, gyroscope and light sensors.
 - Displays real-time sensor data.
 - Interactive button to start/stop sensor updates.
-- Very Simple UI
-- Additional Device Info
-- Automatic flashlight in the dark (Only on devices with a light sensor)
+- Very Simple UI.
+- Additional Device Info.
+- Automatic flashlight in the dark (only on devices with a light sensor).
 
 ## Installation
 
@@ -44,4 +44,4 @@ This will start the Metro bundler and launch the project on an emulator or conne
 
 
 ## Contributing
-This is just a basic project,contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Peace!!
+This is just a basic project, contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Peace!!
