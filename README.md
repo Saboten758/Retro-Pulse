@@ -19,7 +19,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
 - Location data.
-- Simple Music Player
+- Simple music player.
 
 ## Installation
 
@@ -46,7 +46,6 @@ Sensors with flashlight and device info<br/>
 For devices without a light sensor<br/>
 <img src="https://i.imgur.com/B0vwLyF.jpeg" width="720" height="700" style="display: block; margin: 0 auto" ><br/>
 For devices with a light sensor<br/>
-<img src="https://i.imgur.com/ewSuZRu.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 <img src="https://i.imgur.com/PUQR2IR.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Location<br/>
 <img src="https://i.imgur.com/ewSuZRu.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
