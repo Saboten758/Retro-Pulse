@@ -41,7 +41,7 @@ const Loc=()=>{
       if (but) {
         getLocat();
   
-        const intervalId = setInterval(getLocat, 2000); 
+        const intervalId = setInterval(getLocat, 3000); 
         
         return () => {
           clearInterval(intervalId);

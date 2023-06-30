@@ -43,7 +43,10 @@ Central<br/>
 <img src="https://i.imgur.com/NRUxYt9.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Sensors with flashlight and device info<br/>
 <img src="https://i.imgur.com/5iIg54N.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
-For Phones Without a light sensor<br/>
+For devices without a light sensor<br/>
+<img src="https://i.imgur.com/B0vwLyF.jpeg" width="720" height="700" style="display: block; margin: 0 auto" ><br/>
+For devices with a light sensor<br/>
+<img src="https://i.imgur.com/ewSuZRu.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 <img src="https://i.imgur.com/PUQR2IR.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Location<br/>
 <img src="https://i.imgur.com/ewSuZRu.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
