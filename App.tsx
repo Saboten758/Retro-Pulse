@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import {Text,Image,View,StyleSheet,Alert, TouchableOpacity,DeviceEventEmitter, FlatList} from 'react-native'
+import React,{useState,useEffect, startTransition} from 'react'
+import {Text,Image,View,StyleSheet,Alert, TouchableOpacity,DeviceEventEmitter, FlatList, ScrollView,PermissionsAndroid} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator,NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/core'
@@ -8,11 +8,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { accelerometer,SensorTypes, setUpdateIntervalForType,magnetometer,gyroscope } from 'react-native-sensors';
 import { hasLightSensor, startLightSensor, stopLightSensor } from 'react-native-ambient-light-sensor';
 import DeviceInfo from 'react-native-device-info';
+import GetLocation from 'react-native-get-location'
+import {Card, Button , Title ,Paragraph } from 'react-native-paper';
 
 setUpdateIntervalForType(SensorTypes.accelerometer, 400);
 setUpdateIntervalForType(SensorTypes.magnetometer, 400);
 setUpdateIntervalForType(SensorTypes.gyroscope, 400);
+
+
+
 const Stack = createNativeStackNavigator();
+const Stack2=createNativeStackNavigator();
 
 var Sound=require('react-native-sound')
 Sound.setCategory('Playback')
@@ -25,12 +31,123 @@ const app=()=>{
   return(
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen component={Home} name="Welcome"/>
-        <Stack.Screen component={Main} name="Sensors"/>
-        <Stack.Screen component={Info} name="Device Info"/>
-        <Stack.Screen component={More} name="Features"/>
+        <Stack.Screen component={All} name="Main"  options={styles.headers}/>
+        <Stack.Screen component={Home} name="Welcome" options={styles.headers}/>
+        <Stack.Screen component={Main} name="Sensors" options={styles.headers}/>
+        <Stack.Screen component={Info} name="Device Info" options={styles.headers}/>
+        <Stack.Screen component={More} name="Features" options={styles.headers}/>
+        <Stack2.Screen component={Loc} name="Location" options={styles.headers}/>
       </Stack.Navigator>
     </NavigationContainer>
+
+  );
+}
+
+const All=()=>{
+  const navigation=useNavigation();
+  return (
+    <ScrollView>
+        <View style={styles.screen}>
+        <Card style={styles.card}>
+          <Card.Content style={styles.cardContent}>
+            <Title style={styles.title}>Sensors</Title>
+          </Card.Content>
+          <Card.Cover
+            source={require('./data.gif')}
+            style={styles.cardimg}
+          />
+          <Card.Content style={styles.cardContent}>
+            <Paragraph style={styles.paragraph}>
+              Track all your sensor data
+            </Paragraph>
+            <Paragraph style={styles.paragraph}>
+              Get additional device info
+            </Paragraph>
+          </Card.Content>
+          <Card.Actions style={styles.cardActions}>
+            <TouchableOpacity
+              onPress={() => {
+                var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+                  whoosh.setVolume(0.2)
+                  whoosh.play();
+                });
+                navigation.navigate('Welcome');
+              }}
+              style={styles.button}>
+                      <Text style={styles.buttonText}>Go to</Text>
+                      <Icon style={styles.icon} name="hand-o-up" size={20} color="black"/>
+            </TouchableOpacity>
+          </Card.Actions>
+        </Card>
+        <Card style={styles.card}>
+          <Card.Content style={styles.cardContent}>
+            <Title style={styles.title}>Location</Title>
+          </Card.Content>
+          <Card.Cover
+            source={require('./cherry.gif')}
+            style={styles.cardimg}
+          />
+          <Card.Content style={styles.cardContent}>
+            <Paragraph style={styles.paragraph}>
+              Get Your Current Location and Altitude
+            </Paragraph>
+          </Card.Content>
+          <Card.Actions style={styles.cardActions}>
+            <TouchableOpacity
+              onPress={() => {var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+                whoosh.setVolume(0.2)
+                whoosh.play();
+              });
+                navigation.navigate('Location');
+              }}
+              style={styles.button}>
+                    <Text style={styles.buttonText}>Go To</Text>
+                    <Icon style={styles.icon} name="hand-o-up" size={20} color="black"/>
+            </TouchableOpacity>
+          </Card.Actions>
+        </Card>
+      </View>
+
+        
+    </ScrollView>
+      
+  )
+}
+
+const Loc=()=>{
+
+  const [lat,setlat]=useState("")
+  const [long,setlong]=useState("")
+  const [alti,setalti]=useState("")
+  const[acc,setacc]=useState("")
+
+  return(
+    <View style={styles.container}>
+      <Text style={styles.txt}>Latitude: {lat}</Text>
+      <Text style={styles.txt}>Longitude: {long}</Text>
+      <Text style={styles.txt}>Altitude: {alti}</Text>
+      <Text style={styles.txt}>Accuracy: {acc}</Text>
+      <TouchableOpacity onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });GetLocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 60000,
+    })
+    .then(location => {
+      setlat(String(location.latitude))
+      setlong(String(location.longitude))
+      setalti(String(location.altitude))
+      setacc(String(location.accuracy))
+    })
+    .catch(error => {
+      const { code, message } = error;
+      console.warn(code, message);
+    })}} style={styles.button2}>
+        <Icon name="globe" color='black' size={15}/>
+        <Text style={styles.buttonText}>Get Location Details</Text>
+      </TouchableOpacity>
+    </View>
 
   );
 }
@@ -145,7 +262,10 @@ const Info=()=>{
       <TouchableOpacity style={styles.button2} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
             whoosh.setVolume(0.2)
             whoosh.play();
-          });navigation.navigate('Features')}}><Icon name="database" style={styles.icon} color="black" size={13}/><Text style={styles.buttonText}>All Features</Text></TouchableOpacity>
+          });navigation.navigate('Features')}}>
+            <Icon name="database" style={styles.icon} color="black" size={13}/>
+            <Text style={styles.buttonText}>All Features</Text>
+            </TouchableOpacity>
       </View>
     
 
@@ -295,6 +415,34 @@ const Main=()=>{
 export default app;
 
 const styles=StyleSheet.create({
+  screen: {
+    flex: 1,
+    padding: 16,
+  },
+  card: {
+    marginBottom: 16,
+    elevation: 4,
+    backgroundColor:"#6B7A8F",
+  },
+  cardimg: {
+    height: 200,
+  },
+  cardContent: {
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  paragraph: {
+    fontSize: 16,
+    marginBottom: 8,
+  },
+  cardActions: {
+    justifyContent: 'flex-end',
+    padding: 8,
+  },
   container:{
     padding:10,alignItems:'center',justifyContent:'center',flex:1,backgroundColor:"#6B7A8F"
   },
@@ -396,4 +544,13 @@ const styles=StyleSheet.create({
     fontSize: 15,
     color: '#333333',
   },
+  headers:{
+    headerStyle: {
+      backgroundColor: '#191970',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }
 });
