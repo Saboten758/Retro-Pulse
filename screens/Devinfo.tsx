@@ -6,9 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { hasLightSensor, startLightSensor, stopLightSensor } from 'react-native-ambient-light-sensor';
 import DeviceInfo from 'react-native-device-info';
 
-
-
-
 var Sound=require('react-native-sound')
 Sound.setCategory('Playback')
 

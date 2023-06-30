@@ -6,6 +6,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 
 - [Features](#features)
 - [Installation](#installation)
+- [Screenshots](#screenshots)
 - [Usage](#usage)
 - [Contributing](#contributing)
 
@@ -18,6 +19,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
 - Location data.
+- Simple Music Player
 
 ## Installation
 
@@ -34,6 +36,20 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
     ```bash
     npm start
 This will start the Metro bundler and launch the project on an emulator or connected device.
+
+## Screenshots
+<div style="text-align:center"><img src="https://i.imgur.com/n2pH8ZI.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Central<br/>
+<img src="https://i.imgur.com/NRUxYt9.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Sensors with flashlight and device info<br/>
+<img src="https://i.imgur.com/5iIg54N.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+For Phones Without a light sensor<br/>
+<img src="https://i.imgur.com/PUQR2IR.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Location<br/>
+<img src="https://i.imgur.com/ewSuZRu.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Basic Music Player<br/>
+
+
 ## Usage
 1. Open the app on your device or emulator.
 2. Navigate to the "Sensors" card
@@ -43,6 +59,7 @@ This will start the Metro bundler and launch the project on an emulator or conne
 6. Use the "Flash" button from the main screen for using flashlight.
 7. Tap the "i" from the main screen button for getting more info about the device. In the menu, tap on "All Features" to list all the available android features.
 8. Navigate to "Location" card for getting location details
+
 
 
 ## Contributing
