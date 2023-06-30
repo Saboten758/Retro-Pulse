@@ -53,7 +53,7 @@ const All=()=>{
             <Title style={styles.title}>Sensors</Title>
           </Card.Content>
           <Card.Cover
-            source={require('./data.gif')}
+            source={require('./assets/data.gif')}
             style={styles.cardimg}
           />
           <Card.Content style={styles.cardContent}>
@@ -84,7 +84,7 @@ const All=()=>{
             <Title style={styles.title}>Location</Title>
           </Card.Content>
           <Card.Cover
-            source={require('./cherry.gif')}
+            source={require('./assets/cherry.gif')}
             style={styles.cardimg}
           />
           <Card.Content style={styles.cardContent}>
@@ -158,7 +158,7 @@ const Home=()=>{
   return(
     <View style={styles.container}>
       <Text style={styles.text3}>Starting...</Text>
-      <Image source={require('./cassette.gif')} style={styles.giif}/>
+      <Image source={require('./assets/cassette.gif')} style={styles.giif}/>
       <View style={styles.sensor_data_cont}>
 
         <TouchableOpacity style={styles.button} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
@@ -425,7 +425,8 @@ const styles=StyleSheet.create({
     backgroundColor:"#6B7A8F",
   },
   cardimg: {
-    height: 200,
+    flex:1,
+    height: 300,
   },
   cardContent: {
     padding: 16,
@@ -444,7 +445,11 @@ const styles=StyleSheet.create({
     padding: 8,
   },
   container:{
-    padding:10,alignItems:'center',justifyContent:'center',flex:1,backgroundColor:"#6B7A8F"
+    padding:10,
+    alignItems:'center',
+    justifyContent:'center',
+    flex:1,
+    backgroundColor:"#6B7A8F"
   },
   txt:{
     fontSize: 17,
