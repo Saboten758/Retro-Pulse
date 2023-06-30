@@ -142,7 +142,7 @@ const Info=()=>{
       <Text style={styles.txt}>IP Address: {ip}</Text>
       <Text style={styles.txt}>Light Sensor: {hasSensor ? 'YES' : 'NO'}  Light Sensor Data: {result}</Text>
       <Text style={styles.txt}>Bootloader: {nmodel}</Text>
-      <TouchableOpacity style={styles.button2} onPress={()=>{var whoosh = new Sound('beep.mp3', Sound.MAIN_BUNDLE, () => {
+      <TouchableOpacity style={styles.button2} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
             whoosh.setVolume(0.2)
             whoosh.play();
           });navigation.navigate('Features')}}><Icon name="database" style={styles.icon} color="black" size={13}/><Text style={styles.buttonText}>All Features</Text></TouchableOpacity>
