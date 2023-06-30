@@ -14,6 +14,13 @@ setUpdateIntervalForType(SensorTypes.magnetometer, 400);
 setUpdateIntervalForType(SensorTypes.gyroscope, 400);
 const Stack = createNativeStackNavigator();
 
+var Sound=require('react-native-sound')
+Sound.setCategory('Playback')
+var whoosh = new Sound('start.mp3', Sound.MAIN_BUNDLE, () => {
+  whoosh.setVolume(0.2)
+  whoosh.play();
+});
+
 const app=()=>{
   return(
     <NavigationContainer>
@@ -36,12 +43,31 @@ const Home=()=>{
       <Text style={styles.text3}>Starting...</Text>
       <Image source={require('./cassette.gif')} style={styles.giif}/>
       <View style={styles.sensor_data_cont}>
-        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Sensors')}><Icon style={styles.icon} name="microchip" size={20} color="black" /><Text style={styles.buttonText}>Sensors</Text></TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('Device Info')} style={styles.info}><Icon style={styles.icon} name="info" color="black" size={20}/></TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });navigation.navigate('Sensors')}}><Icon style={styles.icon} name="microchip" size={20} color="black" />
+                <Text style={styles.buttonText}>Sensors</Text>
+          </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });navigation.navigate('Device Info')}} style={styles.info}>
+            <Icon style={styles.icon} name="info" color="black" size={20}/>
+          </TouchableOpacity>
+
       </View>
-      <TouchableOpacity style={styles.torch_button} onPress={()=>{setTorching(!torching);if (torching==true)Torch.switchState(true);else Torch.switchState(false); }}>
-      <Icon style={styles.icon} name="sun-o" size={20} color="black"/>
-      <Text style={styles.buttonText}>FLASH</Text>
+
+      <TouchableOpacity style={torching?styles.torch_button:styles.torch_button2} onPress={()=>{
+        var whoosh = new Sound('beep.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });
+        setTorching(!torching);if (torching==true)Torch.switchState(true);else Torch.switchState(false); }}>
+              <Icon style={styles.icon} name="sun-o" size={20} color="black"/>
+              <Text style={styles.buttonText}>FLASH</Text>
       </TouchableOpacity>
     </View>
 
@@ -116,7 +142,10 @@ const Info=()=>{
       <Text style={styles.txt}>IP Address: {ip}</Text>
       <Text style={styles.txt}>Light Sensor: {hasSensor ? 'YES' : 'NO'}  Light Sensor Data: {result}</Text>
       <Text style={styles.txt}>Bootloader: {nmodel}</Text>
-      <TouchableOpacity style={styles.button2} onPress={()=>navigation.navigate('Features')}><Icon name="database" style={styles.icon} color="black" size={13}/><Text style={styles.buttonText}>All Features</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.button2} onPress={()=>{var whoosh = new Sound('beep.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });navigation.navigate('Features')}}><Icon name="database" style={styles.icon} color="black" size={13}/><Text style={styles.buttonText}>All Features</Text></TouchableOpacity>
       </View>
     
 
@@ -219,7 +248,10 @@ const Main=()=>{
   return (
     <View style={styles.container}>
       <Text style={styles.text}>SENSORS!</Text>
-      <TouchableOpacity onPress={()=>{Alert.alert("Woahh!");setbut(!but);}} style={styles.button}>
+      <TouchableOpacity onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });setbut(!but);Alert.alert("Woahh!");}} style={styles.button}>
         <Text style={styles.buttonText}>{but?"Press me!":"woaah!"}</Text>
         <Icon style={styles.icon} name="hand-o-up" size={20} color="black"/>
       </TouchableOpacity>
@@ -248,7 +280,10 @@ const Main=()=>{
       </View>
       <Text style={styles.text2}>Device has light sensor: {hasSensor ? 'YEP' : 'NOPE :<'}</Text>
       <Text>{hasSensor?"Light Sensor Data:"+result:""}</Text>
-      <TouchableOpacity onPress={()=>{settoggle(!toggle)}} style={{ backgroundColor: hasSensor?toggle ? "#39FF14" : "#FF3366":"", padding:hasSensor? 10:0, borderRadius:hasSensor? 5:0 ,marginTop:hasSensor?10:0}}><Text style={styles.buttonText}>{hasSensor?!toggle?"Automatically turn on Flashlight?":"Flashlight will turn on automatically in Dark!":""}</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>{var whoosh = new Sound('beep.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });settoggle(!toggle)}} style={{ backgroundColor: hasSensor?toggle ? "#39FF14" : "#FF3366":"", padding:hasSensor? 10:0, borderRadius:hasSensor? 5:0 ,marginTop:hasSensor?10:0}}><Text style={styles.buttonText}>{hasSensor?!toggle?"Automatically turn on Flashlight?":"Flashlight will turn on automatically in Dark!":""}</Text></TouchableOpacity>
     </View>
 
   );
@@ -326,6 +361,15 @@ const styles=StyleSheet.create({
     borderRadius: 30,
     marginTop:10,
     backgroundColor: '#BBA9C3',
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  torch_button2:{
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginTop:10,
+    backgroundColor: '#551A8B',
     justifyContent:'center',
     alignItems:'center',
   },
