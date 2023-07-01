@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView,StyleSheet,Text,View,Button,FlatList,ActivityIndicator,TouchableOpacity,ToastAndroid, ScrollView} from 'react-native';
+import {SafeAreaView,StyleSheet,Text,View,FlatList,ActivityIndicator,TouchableOpacity,Image, ScrollView} from 'react-native';
 import TrackPlayer, {
     useTrackPlayerEvents,
     usePlaybackState,
@@ -8,7 +8,8 @@ import TrackPlayer, {
     State
   } from 'react-native-track-player';
   import Icon from 'react-native-vector-icons/FontAwesome';
-  import { setupPlayer, addTracks } from './trackplayer';
+  import { setupPlayer, addTracks,Night } from './trackplayer';
+import { Card } from 'react-native-paper';
  
   function TrackProgress() {
     const { position, duration } = useProgress(200);
@@ -46,9 +47,14 @@ import TrackPlayer, {
     }
   
     return(
-      <View>
-          <Text style={styles.songTitle}>{info.title}</Text>
-          <Text style={styles.artistName}>{info.artist}</Text>
+      <View style={styles.media}>
+      <View style={styles.scanlines}>
+          <View style={styles.crtEffect}>
+            <Text>Now Playing:</Text>
+            <Text style={styles.songTitle}>{info.title}</Text>
+            <Text style={styles.artistName}>{info.artist}</Text>
+          </View>
+      </View>
       </View>
     );}
   function Playlist() {
@@ -179,9 +185,17 @@ function Music() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header/>
-      <TrackProgress/>
+      
+      <Card>
+      <Card.Cover
+              source={require('./assets/city.gif')}
+              style={styles.city}
+            />
+      </Card>
       <Playlist/>
+      <TouchableOpacity style={styles.button} onPress={Night}><Text style={styles.txt}>Fetch Current Song Preview</Text></TouchableOpacity>
+      <TrackProgress/>
+      <Header/>
     </SafeAreaView>
   );
 }
@@ -190,41 +204,129 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems:"flex-start",
     padding: 20,
     backgroundColor: '#a8c0c8',
     
+    
   },
   playlist: {
+    padding:2,
     marginTop: 40,
-    backgroundColor:'white',
+    backgroundColor:'#FFD890',
     marginBottom: 40,
     borderRadius:20,
-    height:100,
+    height:170,
+    width:380,
+    position:'relative',
+    textShadowColor:'black',
+    borderWidth: 4,
+    borderColor: '#CD853F', 
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 4,
+  },
+  button: {
+    position:'relative',
+    backgroundColor: '#33334d',
+    borderRadius: 8,
+    marginTop:2,
+    padding: 4,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 4,
   },
   playlistItem: {
+    position:'relative',
     fontSize: 18,
-    color:'black',
+    color: 'black',
     paddingTop: 4,
     paddingBottom: 4,
     paddingLeft: 8,
     paddingRight: 8,
-    borderRadius:20
+    borderRadius: 20,
+    backgroundColor: '#FFD700', 
+    marginVertical: 4, 
+    fontWeight: 'bold',
+    textShadowColor: '#CD853F', 
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },
+  media: {
+    flex: 1,
+    overflow: 'hidden',
+    marginTop: 10,
+    backgroundColor: 'black',
+    borderRadius: 10,
+    width: 380,
+    height: 120,
+    padding: 10,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    shadowColor: 'back',
+    shadowOffset: { width: 3, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    elevation: 4,
+    borderColor:'grey',
+    borderWidth:6,
+  },
+  txt:{
+    marginTop:5,
+    fontSize:16,
+    fontWeight:'bold',
+    color:'white'
   },
   trackProgress: {
     marginTop: 40,
     textAlign: 'center',
     fontSize: 24,
-    color: '#eee'
+    color: '#445a6e'
   },
   songTitle: {
-    fontSize: 32,
-    marginTop: 50,
-    color: '#BF40FF'
+    fontSize: 22,
+    color: 'white',
+    marginLeft: 10,
+    flex: 1,
   },
   artistName: {
-    fontSize: 24,
-    color: 'black'
+    fontSize: 21,
+    color: 'red',
+    marginLeft: 10,
+    paddingBottom:2,
+    textAlign: 'center',
   },
+  city:{
+    height:240,
+    width:380,
+    
+  },
+  round:{
+    borderRadius:30,
+    flex:1,
+  },
+  crtEffect: {
+    flex: 1,
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  crtOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    mixBlendMode: 'overlay',
+  },
+  scanlines: {
+    ...StyleSheet.absoluteFillObject,
+    opacity: 0.5,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    mixBlendMode: 'screen',
+    pointerEvents: 'none',}
+
 });
 
 export default Music;

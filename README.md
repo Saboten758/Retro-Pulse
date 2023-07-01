@@ -19,7 +19,7 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
 - Location data.
-- Simple music player.
+- Simple music player with Nightwave Plaza radio.
 
 ## Installation
 
@@ -48,8 +48,8 @@ For devices without a light sensor<br/>
 For devices with a light sensor<br/>
 <img src="https://i.imgur.com/PUQR2IR.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Location<br/>
-<img src="https://i.imgur.com/ewSuZRu.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
-Basic Music Player<br/>
+<img src=https://i.imgur.com/sBPUvvF.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Nightwave Plaza Radio ♫<br/>
 
 
 ## Usage
@@ -61,6 +61,7 @@ Basic Music Player<br/>
 6. Use the "Flash" button from the main screen for using flashlight.
 7. Tap the "i" from the main screen button for getting more info about the device. In the menu, tap on "All Features" to list all the available android features.
 8. Navigate to "Location" card for getting location details
+9. Navigate to "Music" card for playing music straight from Nightwave Plaza.
 
 
 

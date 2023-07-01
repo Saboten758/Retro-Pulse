@@ -125,10 +125,10 @@ const All=()=>{
             />
             <Card.Content style={styles.cardContent}>
               <Paragraph style={styles.paragraph}>
-                Play Music
+                Play Music & Chill
               </Paragraph>
               <Paragraph style={styles.paragraph}>
-                & Chill
+                Nightwave Radio 24x7 ♫
               </Paragraph>
             </Card.Content>
             <Card.Actions style={styles.cardActions}>

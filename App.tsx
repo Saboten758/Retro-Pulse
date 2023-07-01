@@ -32,7 +32,7 @@ const app=()=>{
         <Stack.Screen component={Info} name="Device Info" options={styles.headers}/>
         <Stack.Screen component={More} name="Features" options={styles.headers}/>
         <Stack.Screen component={Loc} name="Location" options={styles.headers}/>
-        <Stack.Screen component={Music} name="Music" options={styles.headers}/>
+        <Stack.Screen component={Music} name="Music" options={styles.headers3}/>
       </Stack.Navigator>
     </NavigationContainer>
 
@@ -54,6 +54,16 @@ const styles=StyleSheet.create({
   },
   headers2:{
     title: 'Central',
+    headerStyle: {
+      backgroundColor: '#191970',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  },
+  headers3:{
+    title: 'Nightwave Plaza',
     headerStyle: {
       backgroundColor: '#191970',
     },

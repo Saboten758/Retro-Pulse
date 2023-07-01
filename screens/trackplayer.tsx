@@ -67,27 +67,35 @@ export async function setupPlayer() {
 const addedSongIds = [];
 export async function addTracks() {
   await TrackPlayer.add([
-      {
-        id: '1',
-        url: require('./assets/fluidity-100-ig-edit-4558.mp3'),
-        title: 'Fluidity',
-        artist: 'tobylane',
-        duration: 60,
-      },
-      {
-        id: '2',
-        url: require('./assets/penguinmusic-modern-chillout-future-calm-12641.mp3'),
-        title: 'Modern Chillout',
-        artist: 'penguinmusic',
-        duration: 66,
-      },
-      {
-        id: '3',
-        url: require('./assets/powerful-beat-121791.mp3'),
-        title: 'Powerful Beat',
-        artist: 'penguinmusic',
-        duration: 73,
-      }
+    {
+      id:'1',
+      url: "http://radio.plaza.one/mp3",
+      artist:"Nightwave Plaza",
+      title:'Radio',
+      duration:0
+    }
+    //extras
+      // {
+      //   id: '1',
+      //   url: require('./assets/fluidity-100-ig-edit-4558.mp3'),
+      //   title: 'Fluidity',
+      //   artist: 'tobylane',
+      //   duration: 60,
+      // },
+      // {
+      //   id: '2',
+      //   url: require('./assets/penguinmusic-modern-chillout-future-calm-12641.mp3'),
+      //   title: 'Modern Chillout',
+      //   artist: 'penguinmusic',
+      //   duration: 66,
+      // },
+      // {
+      //   id: '3',
+      //   url: require('./assets/powerful-beat-121791.mp3'),
+      //   title: 'Powerful Beat',
+      //   artist: 'penguinmusic',
+      //   duration: 73,
+      // }
     ]);
     await TrackPlayer.setRepeatMode(RepeatMode.Queue);
   
@@ -138,6 +146,10 @@ export async function playbackService() {
     TrackPlayer.skipToPrevious();
   });
 }
-setInterval(async () => {
-  await Nightwave();
-}, 30000);
+
+export async function Night(){
+    await Nightwave()
+}
+// setInterval(async () => {
+//   await Nightwave();
+// }, 30000);
