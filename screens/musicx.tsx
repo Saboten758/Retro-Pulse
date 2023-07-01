@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView,StyleSheet,Text,View,Button,FlatList,ActivityIndicator,TouchableOpacity,ToastAndroid} from 'react-native';
+import {SafeAreaView,StyleSheet,Text,View,Button,FlatList,ActivityIndicator,TouchableOpacity,ToastAndroid, ScrollView} from 'react-native';
 import TrackPlayer, {
     useTrackPlayerEvents,
     usePlaybackState,
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     marginBottom: 40,
     borderRadius:20,
+    height:100,
   },
   playlistItem: {
     fontSize: 18,
