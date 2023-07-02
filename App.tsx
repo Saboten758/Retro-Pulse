@@ -11,6 +11,7 @@ import Home from './screens/Welcome'
 import Info from './screens/Devinfo'
 import More from './screens/features'
 import Music from './screens/musicx'
+import WeatherPage from './screens/Weather';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ const app=()=>{
         <Stack.Screen component={More} name="Features" options={styles.headers}/>
         <Stack.Screen component={Loc} name="Location" options={styles.headers}/>
         <Stack.Screen component={Music} name="Music" options={styles.headers3}/>
+        <Stack.Screen component={WeatherPage} name="Weather" options={styles.headers}/>
       </Stack.Navigator>
     </NavigationContainer>
 

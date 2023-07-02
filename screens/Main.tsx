@@ -24,6 +24,9 @@ const All=()=>{
   const showMusicTost = () => {
     ToastAndroid.show('Music!', ToastAndroid.SHORT);
   };
+  const showWeatherTost = () => {
+    ToastAndroid.show('Weather Details!', ToastAndroid.SHORT);
+  };
     const navigation=useNavigation();
     return (
       <ScrollView style={{backgroundColor:"#c5a8a8"}}>
@@ -96,7 +99,7 @@ const All=()=>{
           <Card style={styles.card}>
             <Card.Content style={styles.cardContent}>
               <View style={{flexDirection:'row'}}>
-              <Title style={styles.title}>Music</Title>
+              <Title style={styles.title}>Music レコードプレーヤー</Title>
               <TouchableOpacity style={styles.smol}onPress={async()=>{
                 if(player==false){
                   setupPlayer(true)
@@ -150,6 +153,44 @@ const All=()=>{
           </Card>
           
         </View>
+        <View style={styles.screen}>
+          <Card style={styles.card}>
+            <Card.Content style={styles.cardContent}>
+              <Title style={styles.title}>Weather 天気情報</Title>
+              
+            </Card.Content>
+            <Card.Cover
+              source={require('./assets/rain.png')}
+              style={styles.cardimg}
+            />
+            <Card.Content style={styles.cardContent}>
+              <Paragraph style={styles.paragraph}>
+                Get Current Weather Details
+              </Paragraph>
+              <Paragraph style={styles.paragraph}>
+                  Needs Location Permissions
+              </Paragraph>
+            </Card.Content>
+            <Card.Actions style={styles.cardActions}>
+              <TouchableOpacity
+                onPress={() => {
+                  
+                  var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+                    whoosh.setVolume(0.2)
+                    whoosh.play();
+                  });
+                  showWeatherTost();
+                  navigation.navigate('Weather');
+                }}
+                style={styles.button}>
+                        <Text style={styles.buttonText}>Go To</Text>
+                        <Icon style={styles.icon} name="hand-o-up" size={20} color="black"/>
+              </TouchableOpacity>
+            </Card.Actions>
+          </Card>
+          
+        </View>
+
   
           
       </ScrollView>

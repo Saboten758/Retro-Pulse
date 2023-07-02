@@ -19,7 +19,8 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 - Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
 - Location data.
-- Simple music player with Nightwave Plaza radio.
+- Simple music player with Nightwave Plaza radio (uses API).
+- Uses OpenWeather API to fetch location based weather data.
 
 ## Installation
 
@@ -32,13 +33,18 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 3. Install the dependencies:
     ```bash
     npm install
+4. #### Create a file in the 'screens' directory and create a 'env.tsx' file and type:
+    ```bash
+    export  const OpenWeatherAPi=[YOUR API KEY]
 4. Run the project:
     ```bash
     npm start
 This will start the Metro bundler and launch the project on an emulator or connected device.
 
 ## Screenshots
-<div style="text-align:center"><img src="https://i.imgur.com/n2pH8ZI.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+<div style="text-align:center"><img src="https://i.imgur.com/9nSDLW4.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Central<br/>
+<div style="text-align:center"><img src="https://i.imgur.com/6mun8uH.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Central<br/>
 <img src="https://i.imgur.com/GlMBHbJ.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Sensors with flashlight and device info<br/>
@@ -52,6 +58,7 @@ Location<br/>
 Nightwave Plaza Radio ♫<br/>
 
 
+
 ## Usage
 1. Open the app on your device or emulator.
 2. Navigate to the "Sensors" card
@@ -62,6 +69,7 @@ Nightwave Plaza Radio ♫<br/>
 7. Tap the "i" from the main screen button for getting more info about the device. In the menu, tap on "All Features" to list all the available android features.
 8. Navigate to "Location" card for getting location details
 9. Navigate to "Music" card for playing music straight from Nightwave Plaza.
+10. Navigate below to "Wheather" card to get location based weather data (work in progress).
 
 
 
