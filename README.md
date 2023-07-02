@@ -40,15 +40,15 @@ This will start the Metro bundler and launch the project on an emulator or conne
 ## Screenshots
 <div style="text-align:center"><img src="https://i.imgur.com/n2pH8ZI.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Central<br/>
-<img src="https://i.imgur.com/NRUxYt9.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+<img src="https://i.imgur.com/GlMBHbJ.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Sensors with flashlight and device info<br/>
 <img src="https://i.imgur.com/5iIg54N.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 For devices without a light sensor<br/>
 <img src="https://i.imgur.com/B0vwLyF.jpeg" width="720" height="700" style="display: block; margin: 0 auto" ><br/>
 For devices with a light sensor<br/>
-<img src="https://i.imgur.com/PUQR2IR.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+<img src="https://i.imgur.com/eRZuBvy.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Location<br/>
-<img src=https://i.imgur.com/sBPUvvF.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+<img src=https://i.imgur.com/E76TUh5.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Nightwave Plaza Radio ♫<br/>
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView,StyleSheet,Text,View,FlatList,ActivityIndicator,TouchableOpacity,Image, ScrollView} from 'react-native';
+import {ImageBackground,SafeAreaView,StyleSheet,Text,View,FlatList,ActivityIndicator,TouchableOpacity,Image, ScrollView} from 'react-native';
 import TrackPlayer, {
     useTrackPlayerEvents,
     usePlaybackState,
@@ -184,7 +184,7 @@ function Music() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ImageBackground source={require('./assets/more.jpg')}style={styles.container}>
       
       <Card>
       <Card.Cover
@@ -196,12 +196,13 @@ function Music() {
       <TouchableOpacity style={styles.button} onPress={Night}><Text style={styles.txt}>Fetch Current Song Preview</Text></TouchableOpacity>
       <TrackProgress/>
       <Header/>
-    </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    position:'relative',
     flex: 1,
     justifyContent: 'center',
     alignItems:"flex-start",
@@ -258,6 +259,7 @@ const styles = StyleSheet.create({
   },
   media: {
     flex: 1,
+    position:'relative',
     overflow: 'hidden',
     marginTop: 10,
     backgroundColor: 'black',
@@ -286,7 +288,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     textAlign: 'center',
     fontSize: 24,
-    color: '#445a6e'
+    color: '#c1c1d7'
   },
   songTitle: {
     fontSize: 22,

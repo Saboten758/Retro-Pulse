@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
-import {Text,Image,View,StyleSheet, TouchableOpacity} from 'react-native'
+import {Text,ImageBackground,View,StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
 
 import {useNavigation} from '@react-navigation/core'
 import Torch from 'react-native-torch';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Card } from 'react-native-paper';
+
+const image = require('./assets/back1.jpg');
 
 var Sound=require('react-native-sound')
 Sound.setCategory('Playback')
@@ -13,88 +15,130 @@ const Home=()=>{
     const [torching,setTorching]=useState(true)
     const navigation=useNavigation();
     return(
-      <View style={styles.container}>
-        <Text style={styles.text3}>Starting...</Text>
-        <View style={styles.space}>
-        <Card>
-      <Card.Cover
-              source={require('./assets/cassette.gif')}
-              style={styles.giif}
-            />
-      </Card>
-        </View>
-        
-        {/* <Image source={require('./assets/cassette.gif')} style={styles.giif}/> */}
-        <View style={styles.sensor_data_cont}>
-  
-          <TouchableOpacity style={styles.button} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
-              whoosh.setVolume(0.2)
-              whoosh.play();
-            });navigation.navigate('Sensors')}}><Icon style={styles.icon} name="microchip" size={20} color="black" />
-                  <Text style={styles.buttonText}>Sensors</Text>
-            </TouchableOpacity>
-  
-          <TouchableOpacity onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
-              whoosh.setVolume(0.2)
-              whoosh.play();
-            });navigation.navigate('Device Info')}} style={styles.info}>
-              <Icon style={styles.icon} name="info" color="black" size={20}/>
-            </TouchableOpacity>
-  
-        </View>
-  
+        <ScrollView style={styles.container} contentContainerStyle={{flexGrow: 1}}>
+          <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+          <View style={styles.nice}>
+      <View style={styles.sensor_data_cont}>
+      <Text style={styles.headtxt2}>DEVICE</Text>
+      <Text style={styles.headtxt2}>INFO</Text>
+       <TouchableOpacity onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+            whoosh.setVolume(0.2)
+            whoosh.play();
+          });navigation.navigate('Device Info')}} style={styles.info}>
+            <Icon style={styles.icon} name="info" color="black" size={20}/>
+            <Text style={styles.buttonText}>Data</Text>
+          </TouchableOpacity>
+      </View>
+      <View style={styles.head}>
+      
+      <View style={styles.sensor_data_cont}>
+      
+
+<TouchableOpacity style={styles.button} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+    whoosh.setVolume(0.2)
+    whoosh.play();
+  });navigation.navigate('Sensors')}}><Icon style={styles.icon} name="microchip" size={20} color="black" />
+        <Text style={styles.buttonText}>Sensors</Text>
+  </TouchableOpacity>
+  <Text style={styles.headtxt}>SENSOR</Text>
+      <Text style={styles.headtxt}>DATA</Text>
+
+
+</View>
+      </View>
+      </View>
+      
+
+      <Text style={styles.text3}>Starting...</Text>
+      <View style={styles.space}>
+      <Card>
+    <Card.Cover
+            source={require('./assets/cassette.gif')}
+            style={styles.giif}
+          />
+    </Card>
+      </View>
+      <View style={styles.head}>
         <TouchableOpacity style={torching?styles.torch_button:styles.torch_button2} onPress={()=>{
           var whoosh = new Sound('beep.mp3', Sound.MAIN_BUNDLE, () => {
               whoosh.setVolume(0.2)
               whoosh.play();
             });
           setTorching(!torching);if (torching==true)Torch.switchState(true);else Torch.switchState(false); }}>
-                <Icon style={styles.icon} name="sun-o" size={20} color="black"/>
-                <Text style={styles.buttonText}>FLASH</Text>
+                <Icon style={styles.icon} name="sun-o" size={20} color={torching?"black":"white"}/>
+                <Text style={torching?styles.buttonText:styles.buttonText2}>FLASH</Text>
         </TouchableOpacity>
+        <Text style={styles.headtxt3}>FLASHFLIGHT</Text>
       </View>
+
+          </ImageBackground>
+      
+      
+    </ScrollView>
+      
   
     );
   }
 
   export default Home;
   const styles=StyleSheet.create({
-    screen: {
-      flex: 1,
-      padding: 16,
+    head: {
+      alignItems:'center',
+      margin:10,
+      position:'relative'
     },
-    card: {
-      marginBottom: 16,
-      elevation: 4,
-      backgroundColor:"#6B7A8F",
+    nice:{
+      marginTop:25,
+      flexDirection:'row',
+      alignItems:'center',
+      justifyContent:'center',
+      margin:10
     },
-    cardimg: {
-      flex:1,
-      height: 300,
+    headtxt:{
+      marginBottom:5,
+      fontSize:40,
+      color:'white',
+      justifyContent:'space-between',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
     },
-    cardContent: {
-      padding: 16,
+    headtxt2:{
+      marginBottom:5,
+      fontSize:40,
+      color:'#99ccff',
+      justifyContent:'space-between',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
     },
-    title: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 8,
-    },
-    paragraph: {
-      fontSize: 16,
-      marginBottom: 8,
-    },
-    cardActions: {
-      justifyContent: 'flex-end',
-      padding: 8,
+    headtxt3:{
+      marginTop:5,
+      fontSize:40,
+      color:'#d9d9d9',
+      justifyContent:'space-between',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
     },
     space:{
       margin:10,
+      
     },
+    
     container:{
-      padding:10,
-      alignItems:'center',
-      justifyContent:'center',
       flex:1,
       backgroundColor:"#6B7A8F"
     },
@@ -114,7 +158,6 @@ const Home=()=>{
       color:'#BBA9C3'
     },
     sensor_data_cont:{
-      flexDirection:'row',
       alignItems:'center',
       justifyContent:'center'
     },
@@ -123,63 +166,108 @@ const Home=()=>{
       padding:20
     },
     button: {
-      backgroundColor: '#BBA9C3',
-      borderRadius: 10,
-      paddingVertical: 12,
-      paddingHorizontal: 24,
+      backgroundColor: '#99c2ff',
+      borderRadius: 20,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    button2: {
-      marginTop:10,
-      backgroundColor: '#BBA9C3',
-      borderRadius: 10,
-      paddingVertical: 12,
-      paddingHorizontal: 24,
-      alignItems: 'center',
-      justifyContent: 'center',
+      borderWidth: 2,
+      borderColor: '#E6E6FA',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 5,
     },
     buttonText: {
       color: 'black',
       fontSize: 16,
       fontWeight: 'bold',
     },
+    buttonText2: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
     text3:{
-      color:'black'
+      paddingStart:20,
+      color:'white'
     },
     giif:{
-      height:240,
-      width:380,
+      flex:1,
+      position:'relative',
+      height:300,
+    },
+    image: {
+      flex: 1,
+      justifyContent: 'center',
     },
     torch_button:{
-      width: 60,
-      height: 60,
-      borderRadius: 30,
-      marginTop:10,
-      backgroundColor: '#BBA9C3',
-      justifyContent:'center',
-      alignItems:'center',
+      width: 70,
+      height: 70,
+      borderRadius: 40,
+      marginTop: 15,
+      backgroundColor: '#6666ff',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginHorizontal: 10,
+      borderWidth: 2,
+      borderColor: '#E6E6FA',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 5,
     },
     torch_button2:{
-      width: 60,
-      height: 60,
-      borderRadius: 30,
-      marginTop:10,
-      backgroundColor: '#551A8B',
+      width: 70,
+      height: 70,
+      borderRadius: 40,
+      marginTop:15,
+      backgroundColor: '#666699',
       justifyContent:'center',
       alignItems:'center',
+      marginHorizontal: 10,
+      borderWidth: 2,
+      borderColor: 'grey',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 5,
     },
     icon:{
       alignSelf:'center'
     },
     info:{
-      marginLeft:10,
-      borderRadius:30,
-      alignItems:'center',
-      justifyContent:'center',
-      width:40,
-      height:40,
-      backgroundColor:"#BBA9C3"
+      width:90,
+      height:70,
+      backgroundColor:"#ffb3cc",
+      borderRadius: 20,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderWidth: 2,
+      borderColor: '#E6E6FA',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 5,
     },
     itemContainer: {
       backgroundColor: '#8CA5AD',
@@ -192,13 +280,4 @@ const Home=()=>{
       fontSize: 15,
       color: '#333333',
     },
-    headers:{
-      headerStyle: {
-        backgroundColor: '#191970',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }
   });

@@ -19,6 +19,9 @@ async function fetchCurrentSongId() {
 const showTost = (title) => {
   ToastAndroid.show(title+' was added to playlist!!', ToastAndroid.SHORT);
 };
+const showRefresh = () => {
+  ToastAndroid.show('Reload to see changes', ToastAndroid.SHORT);
+};
 async function fetchSongInfo(songId) {
   try {
     const response = await axios.get(`https://api.plaza.one/songs/${songId}`);
@@ -121,6 +124,7 @@ async function Nightwave(){
 
       await TrackPlayer.add(track);
       showTost(currentSongInfo.title);
+      showRefresh();
       await TrackPlayer.setRepeatMode(RepeatMode.Queue);
     }
   }
