@@ -4,6 +4,7 @@ import {Text,Image,View,StyleSheet, TouchableOpacity} from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import Torch from 'react-native-torch';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Card } from 'react-native-paper';
 
 var Sound=require('react-native-sound')
 Sound.setCategory('Playback')
@@ -14,7 +15,16 @@ const Home=()=>{
     return(
       <View style={styles.container}>
         <Text style={styles.text3}>Starting...</Text>
-        <Image source={require('./assets/cassette.gif')} style={styles.giif}/>
+        <View style={styles.space}>
+        <Card>
+      <Card.Cover
+              source={require('./assets/cassette.gif')}
+              style={styles.giif}
+            />
+      </Card>
+        </View>
+        
+        {/* <Image source={require('./assets/cassette.gif')} style={styles.giif}/> */}
         <View style={styles.sensor_data_cont}>
   
           <TouchableOpacity style={styles.button} onPress={()=>{var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
@@ -78,6 +88,9 @@ const Home=()=>{
       justifyContent: 'flex-end',
       padding: 8,
     },
+    space:{
+      margin:10,
+    },
     container:{
       padding:10,
       alignItems:'center',
@@ -135,12 +148,8 @@ const Home=()=>{
       color:'black'
     },
     giif:{
-      padding:10,
-      height:380,
-      width:450,
-      marginBottom:10,
-      marginTop:10,
-      borderRadius:3,
+      height:240,
+      width:380,
     },
     torch_button:{
       width: 60,
