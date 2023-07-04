@@ -1,4 +1,4 @@
-# Sensors
+# Retro Pulse
 
 Well, I was trying out react-native-sensors and a bunch of other libraries, for getting the real-time (kinda...) sensor data from my phone. This repository contains an app built with React Native.
 
