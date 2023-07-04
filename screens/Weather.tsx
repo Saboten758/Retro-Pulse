@@ -73,7 +73,6 @@ const WeatherPage = () => {
     );
   }
 
-  console.log(weatherData)
   const { name, weather, main, wind,clouds,sys,visibility} = weatherData;
   const { description,icon } = weather[0];
   const { temp,temp_min,temp_max, humidity,feels_like } = main;
