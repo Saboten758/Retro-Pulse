@@ -69,7 +69,7 @@ Nightwave Plaza Radio ♫<br/>
 7. Tap the "i" from the main screen button for getting more info about the device. In the menu, tap on "All Features" to list all the available android features.
 8. Navigate to "Location" card for getting location details
 9. Navigate to "Music" card for playing music straight from Nightwave Plaza.
-10. Navigate below to "Wheather" card to get location based weather data (work in progress).
+10. Navigate below to "Weather" card to get location based weather data.
 
 
 

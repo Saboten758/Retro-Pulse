@@ -1,5 +1,5 @@
 
-import React, { useState ,useEffect} from 'react'
+import React, { useState} from 'react'
 import {Text,View,StyleSheet, TouchableOpacity, ScrollView,ToastAndroid} from 'react-native'
 
 import {useNavigation} from '@react-navigation/core'

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, PermissionsAndroid, Platform, StyleSheet } from 'react-native';
+import { View, Text, PermissionsAndroid, Platform, StyleSheet,ScrollView, ImageBackground, FlatList } from 'react-native';
 import GetLocation from 'react-native-get-location';
 import {OpenWeatherAPi} from './env'
-import { Button } from 'react-native-paper';
+import { Card, Paragraph } from 'react-native-paper';
 const WeatherPage = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const[but,setBut]=useState(false)
+  const[air,setAir]=useState(null);
+
   useEffect(() => {
-    if(but==true){
         const fetchWeatherData = async () => {
             try {
               const granted = await requestLocationPermission();
@@ -20,10 +20,13 @@ const WeatherPage = () => {
                     const { latitude, longitude } = location;
                     const apiKey = OpenWeatherAPi;
                     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-                    
+                    const apiUrl2=`http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
                     const response = await fetch(apiUrl);
+                    const response2 = await fetch(apiUrl2);
                     const data = await response.json();
+                    const data2 = await response2.json();
                     setWeatherData(data);
+                    setAir(data2)
                   })
                   .catch((error) => {
                     console.error(error);
@@ -37,9 +40,8 @@ const WeatherPage = () => {
           };
       
           fetchWeatherData();
-    }
     
-  }, [but]);
+  },[]);
 
   const requestLocationPermission = async () => {
     if (Platform.OS === 'android') {
@@ -63,25 +65,79 @@ const WeatherPage = () => {
     }
   };
 
-  if (!weatherData) {
+  if (!weatherData || !air) {
     return (
-      <View>
-        <Button onPress={()=>{setBut(true)}}>Fetch Data From Open Weather</Button>
+      <View style={styles.container}>
+        <Text>LOADING...</Text>
       </View>
     );
   }
 
-  const { name, weather, main } = weatherData;
-  const { description } = weather[0];
-  const { temp, humidity } = main;
+  console.log(weatherData)
+  const { name, weather, main, wind,clouds,sys,visibility} = weatherData;
+  const { description,icon } = weather[0];
+  const { temp,temp_min,temp_max, humidity,feels_like } = main;
+  const{ speed }=wind;
+
+  const sunrise = new Date(sys.sunrise*1000);
+  const sunset = new Date(sys.sunset*1000);
+
+  const sunriseTimeString = sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const sunsetTimeString = sunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  const airQuality = air.list[0].main.aqi;
+  const comp=air.list[0].components;
 
   return (
-    <View style={styles.container}>
-      <Text>Location: {name}</Text>
-      <Text>Temperature: {(temp -273.15).toFixed(2)}°C</Text>
-      <Text>Description: {description}</Text>
-      <Text>Humidity: {humidity}%</Text>
-    </View>
+    <ScrollView style={styles.container2} contentContainerStyle={{flexGrow: 1}}>
+      <ImageBackground source={{uri:'https://i0.wp.com/i.pinimg.com/originals/ac/72/69/ac72696cb003d7bc0a60822a5d1204fb.gif'}} style={styles.container}>
+                <Text style={{fontSize:20}}>Sunrise: {sunriseTimeString}</Text>
+                <Text style={{fontSize:20}}>Sunset: {sunsetTimeString}</Text>
+          <Card style={{ alignItems: 'center', borderWidth: 2, borderStyle: 'solid', backgroundColor:'#f2f2f2',borderColor: 'black',margin:10}}>
+            <Card.Cover source={{ uri: `https://openweathermap.org/img/w/${icon}.png` }} style={{width: 120, height: 100, resizeMode: 'contain' ,alignSelf:'center'}} />
+              <Card.Content style={{alignItems:'center',padding:10}}>
+                <Paragraph style={{fontSize:20,fontWeight:'bold'}} >
+                {description.toUpperCase()}
+                </Paragraph>
+                <Paragraph style={{fontSize:20,fontWeight:'bold'}}>
+                {(temp -273.15).toFixed(0)}°C
+                </Paragraph>
+                {temp_min !== temp_max && (
+                    <Paragraph style={{fontSize:13}}>
+                      {`${(temp_min -273.15).toFixed(0)}°C ~ ${(temp_max -273.15).toFixed(0)}°C`}
+                    </Paragraph>
+                )}
+                <Paragraph>
+                  {name}
+                </Paragraph>
+                <Paragraph>Feels Like: {(feels_like -273.15).toFixed(0)}°C</Paragraph>
+                <Paragraph>Visibility: {(visibility/1000).toFixed(1)} km</Paragraph>
+              </Card.Content>
+            </Card>
+      
+            
+            <Text>Humidity: {humidity}%</Text>
+            <Text>Wind Speed: {speed} m/s</Text>
+            <Text>Cloud Cover: {clouds.all}%</Text>
+            <Text>Air Pollution Index (API): {airQuality}</Text>
+
+            <View style={{flexDirection:'row'}}>
+              <Card style={{ alignItems: 'center', borderWidth: 2, borderStyle: 'solid', backgroundColor:'#f2f2f2',borderColor: 'black',margin:10}}>
+              <Card.Content style={{alignItems:'center',padding:10}}>
+                <Paragraph style={{fontWeight:'bold', fontSize:16}}>AIR COMPOSITION</Paragraph>
+                <Paragraph>CO: {comp.co}  O3: {comp.o3}</Paragraph>
+                <Paragraph>NH3: {comp.nh3}  SO2: {comp.no2}</Paragraph>
+                <Paragraph>NO: {comp.no}  PM10: {comp.pm10}</Paragraph>
+                <Paragraph>NO2: {comp.no2}  PM2.5: {comp.pm2_5}</Paragraph>
+              </Card.Content>
+            </Card>
+            </View>
+
+           
+      
+    </ImageBackground>
+      </ScrollView>
+    
   );
 };
 
@@ -91,8 +147,12 @@ const styles=StyleSheet.create({
     container:{
         flex:1,
         alignItems:'center',
-        backgroundColor:'blue',
+        backgroundColor:'#6B7A8F',
         justifyContent:'center',
-    }
+    },
+    container2:{
+      flex:1,
+      backgroundColor:'blue',
+  }
 
 })
