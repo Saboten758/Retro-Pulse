@@ -56,6 +56,8 @@ For devices with a light sensor<br/>
 Location<br/>
 <img src=https://i.imgur.com/E76TUh5.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Nightwave Plaza Radio ♫<br/>
+<img src=https://i.imgur.com/zheE3yF.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Weather using OpenWeather API<br/>
 
 
 

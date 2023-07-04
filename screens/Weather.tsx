@@ -87,7 +87,7 @@ const WeatherPage = () => {
 
   const airQuality = air.list[0].main.aqi;
   const comp=air.list[0].components;
-
+  const x={1:"Good",2:'Fair',3:'Moderate',4:'Poor',5:'Very Poor'}
   return (
     <ScrollView style={styles.container2} contentContainerStyle={{flexGrow: 1}}>
       <ImageBackground source={{uri:'https://i0.wp.com/i.pinimg.com/originals/ac/72/69/ac72696cb003d7bc0a60822a5d1204fb.gif'}} style={styles.container}>
@@ -119,7 +119,7 @@ const WeatherPage = () => {
             <Text>Humidity: {humidity}%</Text>
             <Text>Wind Speed: {speed} m/s</Text>
             <Text>Cloud Cover: {clouds.all}%</Text>
-            <Text>Air Pollution Index (API): {airQuality}</Text>
+            <Text>Air Quality: {x[airQuality]}</Text>
 
             <View style={{flexDirection:'row'}}>
               <Card style={{ alignItems: 'center', borderWidth: 2, borderStyle: 'solid', backgroundColor:'#f2f2f2',borderColor: 'black',margin:10}}>
