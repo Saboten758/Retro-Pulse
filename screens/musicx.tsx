@@ -193,7 +193,7 @@ function Music() {
             />
       </Card>
       <Playlist/>
-      <TouchableOpacity style={styles.button} onPress={Night}><Text style={styles.txt}>Fetch Current Song Preview</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={Night}><Text style={styles.txt}>Nightwave Plaza Song Preview</Text></TouchableOpacity>
       <TrackProgress/>
       <Header/>
     </ImageBackground>

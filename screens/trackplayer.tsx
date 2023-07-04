@@ -73,10 +73,32 @@ export async function addTracks() {
     {
       id:'1',
       url: "http://radio.plaza.one/mp3",
-      artist:"Nightwave Plaza",
-      title:'Radio',
+      artist:"Nightwave Plaza: A tranquil oasis of lo-fi hip hop and chill beats.",
+      title:'Night Wave Plaza Radio',
       duration:0
-    }
+    },
+    {
+      id:'2',
+      url: "https://jenny.torontocast.com:2000/stream/J1GOLD",
+      artist:"Japan's greatest hits of the 60s, 70s and 80s.",
+      title:'J1 Gold Radio',
+      duration:0
+    },
+    {
+      id:'3',
+      url: "https://jenny.torontocast.com:2000/stream/J1XTRA",
+      artist:"Playing the hits from the Heisei era (1989~2019)",
+      title:'J1 Xtra Radio',
+      duration:0
+    },
+    {
+      id:'4',
+      url: "https://jenny.torontocast.com:2000/stream/J1HITS",
+      artist:"Japan's Hottest Hits. Playing today's hits heard on Japanese FM radio.",
+      title:'J1 Hits Radio',
+      duration:0
+    },
+
     //extras
       // {
       //   id: '1',
