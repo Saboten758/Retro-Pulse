@@ -68,6 +68,9 @@ const WeatherPage = () => {
   if (!weatherData || !air) {
     return (
       <View style={styles.container}>
+        <Card style={{margin:10}}>
+          <Card.Cover source={require('./assets/weather.gif')} style={{width:150,height:150}}/>
+        </Card>
         <Text>LOADING...</Text>
       </View>
     );

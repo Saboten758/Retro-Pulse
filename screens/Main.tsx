@@ -133,6 +133,9 @@ const All=()=>{
               <Paragraph style={styles.paragraph}>
                 Nightwave Radio 24x7 ♫
               </Paragraph>
+              <Paragraph style={styles.paragraph}>
+                J1 Radio
+              </Paragraph>
             </Card.Content>
             <Card.Actions style={styles.cardActions}>
               <TouchableOpacity

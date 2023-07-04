@@ -115,7 +115,7 @@ const app=()=>{
           ),
         })}/>
         <Stack.Screen component={Music} name="Music" options={({ navigation,route}) => ({
-          headerTitle: (props) => <LogoTitle {...props} name={"Nightwave Plaza"} />,
+          headerTitle: (props) => <LogoTitle {...props} name={"Radio"} />,
           headerStyle: {
             backgroundColor: '#191970',
           },
