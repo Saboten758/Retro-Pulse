@@ -1,6 +1,6 @@
 # Retro Pulse
 
-Well, I was trying out react-native-sensors and a bunch of other libraries, for getting the real-time (kinda...) sensor data from my phone. This repository contains an app built with React Native.
+Well, I was trying out react-native-sensors, react-native-track-player and a bunch of other libraries, for getting the real-time (kinda...) sensor data from my phone and playing music. This repository contains an app built with React Native.
 
 ## Table of Contents
 
@@ -14,22 +14,21 @@ Well, I was trying out react-native-sensors and a bunch of other libraries, for 
 
 - Utilizes accelerometer, magnetometer, gyroscope and light sensors.
 - Displays real-time sensor data.
-- Interactive button to start/stop sensor updates.
-- Simple UI.
+- Simple UI, with a retro look.
 - Additional device info with all system features listed.
 - Automatic flashlight in the dark (only on devices with a light sensor).
-- Location data.
-- Simple music player with Nightwave Plaza radio (uses API).
+- Current Location data.
+- Simple music player with Nightwave Plaza radio and other radios like J1 FM
 - Uses OpenWeather API to fetch location based weather data.
 
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Saboten758/sensors.git
+   git clone https://github.com/Saboten758/Retro-Pulse.git
 2. Navigate to the project directory:
     ```bash
-    cd sensors
+    cd Retro-Pulse
 3. Install the dependencies:
     ```bash
     npm install
@@ -70,10 +69,10 @@ Weather using OpenWeather API<br/>
 6. Use the "Flash" button from the main screen for using flashlight.
 7. Tap the "i" from the main screen button for getting more info about the device. In the menu, tap on "All Features" to list all the available android features.
 8. Navigate to "Location" card for getting location details
-9. Navigate to "Music" card for playing music straight from Nightwave Plaza.
+9. Navigate to "Music" card for playing music straight from Nightwave Plaza and other radio stations.
 10. Navigate below to "Weather" card to get location based weather data.
 
 
 
 ## Contributing
-This is just a basic project, contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Peace!!
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Peace!!
