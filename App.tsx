@@ -13,6 +13,7 @@ import More from './screens/features'
 import Music from './screens/musicx'
 import WeatherPage from './screens/Weather';
 import Easy from './screens/EasyNav';
+import Cam from './screens/Camera';
 
 const Stack = createNativeStackNavigator();
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -44,7 +45,7 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -56,8 +57,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}
@@ -70,8 +71,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -83,8 +84,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -96,8 +97,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -109,8 +110,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -122,8 +123,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -135,12 +136,25 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={23} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={20} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
       </>
           ),
         })}/>
         <Stack.Screen component={Easy} name="Search" options={styles.headers}/>
+        <Stack.Screen component={Cam} name="Camera" options={({ navigation,route}) => ({
+          headerTitle: (props) => <LogoTitle {...props} name={route.name} />,
+          headerStyle: {
+            backgroundColor: '#1f1f2e',
+          },
+          headerTintColor: '#fff',
+          headerRight: () => (
+            <>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+      </>
+          ),
+        })}/>
       </Stack.Navigator>
     </NavigationContainer>
 

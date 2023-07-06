@@ -41,9 +41,11 @@ Well, I was trying out react-native-sensors, react-native-track-player and a bun
 This will start the Metro bundler and launch the project on an emulator or connected device.
 
 ## Screenshots
-<div style="text-align:center"><img src="https://i.imgur.com/9nSDLW4.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+<div style="text-align:center"><img src="https://i.imgur.com/GaGFCv6.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Central<br/>
 <div style="text-align:center"><img src="https://i.imgur.com/6mun8uH.jpeg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Central<br/>
+<img src="https://i.imgur.com/B3uDMCw.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Central<br/>
 <img src="https://i.imgur.com/GlMBHbJ.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Sensors with flashlight and device info<br/>
@@ -57,6 +59,9 @@ Location<br/>
 Nightwave Plaza Radio ♫<br/>
 <img src=https://i.imgur.com/zheE3yF.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
 Weather using OpenWeather API<br/>
+<img src=https://i.imgur.com/T3vgZTk.jpg" width="320" height="700" style="display: block; margin: 0 auto" ><br/>
+Camera<br/>
+
 
 
 

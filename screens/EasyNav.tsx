@@ -4,7 +4,7 @@ import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-
 import { Card, Paragraph, Text} from 'react-native-paper';
 const Easy=()=>{
     const navigation=useNavigation()
-    const data=["Sensors","Music-Radio","Location","Weather","Device Info","Additional Features"]
+    const data=["Sensors","Music-Radio","Location","Weather","Device Info","Additional Features","Camera"]
     return(
         <ScrollView style={{backgroundColor:'#6B7A8F'}}>
             <TouchableOpacity onPress={()=>{navigation.navigate('Sensors')}} style={styles.options}>
@@ -51,6 +51,13 @@ const Easy=()=>{
             <Card>
                 <Card.Content>
                     <Paragraph>{data[5]}</Paragraph>
+                </Card.Content>
+            </Card>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation.navigate('Camera')}} style={styles.options}>
+            <Card>
+                <Card.Content>
+                    <Paragraph>{data[6]}</Paragraph>
                 </Card.Content>
             </Card>
             </TouchableOpacity>

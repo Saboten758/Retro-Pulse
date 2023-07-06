@@ -27,6 +27,9 @@ const All=()=>{
   const showWeatherTost = () => {
     ToastAndroid.show('Weather Details!', ToastAndroid.SHORT);
   };
+  const showCameraTost = () => {
+    ToastAndroid.show('Camera!', ToastAndroid.SHORT);
+  };
     const navigation=useNavigation();
     return (
       <ScrollView style={{backgroundColor:"#c5a8a8"}}>
@@ -36,7 +39,7 @@ const All=()=>{
               <Title style={styles.title}>Sensors</Title>
             </Card.Content>
             <Card.Cover
-              source={require('./assets/data.gif')}
+              source={require('./assets/sensors.jpg')}
               style={styles.cardimg}
             />
             <Card.Content style={styles.cardContent}>
@@ -184,6 +187,41 @@ const All=()=>{
                   });
                   showWeatherTost();
                   navigation.navigate('Weather');
+                }}
+                style={styles.button}>
+                        <Text style={styles.buttonText}>Go To</Text>
+                        <Icon style={styles.icon} name="hand-o-up" size={20} color="black"/>
+              </TouchableOpacity>
+            </Card.Actions>
+          </Card>
+          
+        </View>
+
+        <View style={styles.screen}>
+          <Card style={styles.card}>
+            <Card.Content style={styles.cardContent}>
+              <Title style={styles.title}>Camera</Title>
+              
+            </Card.Content>
+            <Card.Cover
+              source={require('./assets/cam.png')}
+              style={styles.cardimg}
+            />
+            <Card.Content style={styles.cardContent}>
+              <Paragraph style={styles.paragraph}>
+                Take Pics
+              </Paragraph>
+            </Card.Content>
+            <Card.Actions style={styles.cardActions}>
+              <TouchableOpacity
+                onPress={() => {
+                  
+                  var whoosh = new Sound('press.mp3', Sound.MAIN_BUNDLE, () => {
+                    whoosh.setVolume(0.2)
+                    whoosh.play();
+                  });
+                  showCameraTost();
+                  navigation.navigate('Camera');
                 }}
                 style={styles.button}>
                         <Text style={styles.buttonText}>Go To</Text>
