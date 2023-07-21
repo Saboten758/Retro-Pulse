@@ -6,7 +6,6 @@ import { accelerometer,SensorTypes, setUpdateIntervalForType,magnetometer,gyrosc
 import { hasLightSensor, startLightSensor, stopLightSensor } from 'react-native-ambient-light-sensor';
 
 
-
 var Sound=require('react-native-sound')
 Sound.setCategory('Playback')
 
@@ -59,6 +58,7 @@ const Main=()=>{
       const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) => {
         if(!but){
           setAccel({ x, y, z, timestamp });
+            
         } 
       });
       
