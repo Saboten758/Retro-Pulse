@@ -81,8 +81,8 @@ render() {
       }} style={{flex:1,alignItems:'center',marginTop:'auto',marginBottom:'auto'}}/>
       <ImageBackground source={require('./assets/cam_overlay.jpg')}  style={{borderColor:'#15151e',flex:1/7,borderTopWidth:10,position:'relative',alignItems:'center'}} blurRadius={1}>
         <View style={{flexDirection:'row',marginTop:'auto',marginBottom:'auto'}}>
-        <TouchableOpacity  onPress={this.takePicture} style={{alignSelf:'center'}}><Icon name="camera" size={40} color="white"/></TouchableOpacity>
-        <TouchableOpacity  onPress={this.changeCameraType} style={{alignSelf:'center',marginLeft:20}}><Icon name="refresh" size={40} color="white" /></TouchableOpacity>
+        <TouchableOpacity  onPress={this.takePicture} style={{alignSelf:'center'}}><Icon name="camera" size={40} color="white" style={{opacity:0.7}}/></TouchableOpacity>
+        <TouchableOpacity  onPress={this.changeCameraType} style={{alignSelf:'center',marginLeft:20}}><Icon name="refresh" size={40} color="white" style={{opacity:0.7}}/></TouchableOpacity>
         </View>
       
       </ImageBackground >

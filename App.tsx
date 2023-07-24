@@ -45,7 +45,7 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}}/></TouchableOpacity>
       </>
           ),
         })}/>
@@ -57,8 +57,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}}/></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}}/></TouchableOpacity>
       </>
           ),
         })}
@@ -71,8 +71,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -84,8 +84,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}}/></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -97,8 +97,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}} /></TouchableOpacity>
       </>
           ),
         })}/>
@@ -110,8 +110,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}}/></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}}/></TouchableOpacity>
       </>
           ),
         })}/>
@@ -123,8 +123,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}}/></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}}/></TouchableOpacity>
       </>
           ),
         })}/>
@@ -136,8 +136,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}}/></TouchableOpacity>
       </>
           ),
         })}/>
@@ -150,8 +150,8 @@ const app=()=>{
           headerTintColor: '#fff',
           headerRight: () => (
             <>
-        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} /></TouchableOpacity>
-        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} /></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:15}} onPress={()=>{navigation.navigate('Main')}}><Icon name="home" size={25} color="white" style={{opacity:0.7}}/></TouchableOpacity>
+        <TouchableOpacity style={{marginEnd:10}} onPress={()=>{navigation.navigate('Search')}}><Icon name="search" size={23} color="white" style={{opacity:0.7}}/></TouchableOpacity>
       </>
           ),
         })}/>
